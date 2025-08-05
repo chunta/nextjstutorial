@@ -22,7 +22,7 @@ async function ToursPage() {
   return (
     <section>
       <h1 className='text-3xl mb-4'>Tours</h1>
-      <div className='grid md:grid-cols-2 gap-8'>
+      <div className='grid grid-cols-2 md:grid-cols-3 gap-8'>
         {data.map((tour) => {
           return (
             <Link

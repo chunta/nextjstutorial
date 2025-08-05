@@ -9,10 +9,16 @@ type User = {
   lastName: string;
 };
 
-export const createUser = async (prevState: any, formData: FormData) => {
+export const createUser = async (formData: FormData) => {
   'use server';
   // console.log(prevState);
-
+  const rawData = Object.fromEntries(formData);
+  console.log(rawData);
+  
+  const firstName = formData.get('firstName') as string;
+  const lastName = formData.get('lastName') as string;
+  console.log({firstName, lastName});
+  /*
   await new Promise((resolve) => setTimeout(resolve, 3000));
   const firstName = formData.get('firstName') as string;
   const lastName = formData.get('lastName') as string;
@@ -28,6 +34,7 @@ export const createUser = async (prevState: any, formData: FormData) => {
     console.log(error);
     return 'failed to create user...';
   }
+  */
 };
 
 export const fetchUsers = async (): Promise<User[]> => {
