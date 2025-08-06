@@ -9,6 +9,19 @@ type User = {
   lastName: string;
 };
 
+export const createUser = async (formData: FormData)=> {
+  const firstName = formData.get('firstName') as string;
+  const lastName = formData.get('lastName') as string;
+  const newUser: User = { firstName, lastName, id: Date.now().toString() };
+  try {
+  await saveUser(newUser);
+  } catch(error) {
+    console.log(error);
+  }
+   ('/actions');
+};
+
+/*
 export const createUser = async (prevState: any, formData: FormData) => {
   'use server';
   // console.log(prevState);
@@ -29,6 +42,7 @@ export const createUser = async (prevState: any, formData: FormData) => {
     return 'failed to create user...';
   }
 };
+*/
 
 export const fetchUsers = async (): Promise<User[]> => {
   const result = await readFile('users.json', { encoding: 'utf8' });
